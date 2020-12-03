@@ -6,17 +6,6 @@
 This repository is supplementary to our paper "An Improved Wide-Kernel CNN for Classifying Multivariate Signals in Fault Diagnosis" for reproducing our proposed 
 models and their respective performance. 
 
-### Citation
-When using our code, please cite our paper as follows:
-```
-@article{hoogen2020improvedWDCNN,
-  title={An Improved Wide-Kernel CNN for Classifying Multivariate Signals in Fault Diagnosis},
-  author={van den Hoogen, Jurgen and Bloemheuvel, Stefan and Atzmueller, Martin},
-  journal={ICDMW},
-  year={2020}
-}
-```
-
 ### Abstract
 Deep Learning (DL) provides considerable opportu- nities for increased efficiency and performance in fault diagnosis. The ability of DL methods for automatic 
 feature extraction can reduce the need for time-intensive feature construction and prior knowledge on complex signal processing. In this paper, we propose two 
@@ -28,6 +17,16 @@ outperform traditional Machine Learning applications as well as state-of-the-art
 We show that both models are also able to adapt well to noisy input data, which makes them suitable for condition- based maintenance contexts. Furthermore, we 
 investigate and demonstrate explainability and transparency of the models which is particularly important in large-scale industrial applications.
 
+### Citation
+When using our code, please cite our paper as follows:
+```
+@article{hoogen2020improvedWDCNN,
+  title={An Improved Wide-Kernel CNN for Classifying Multivariate Signals in Fault Diagnosis},
+  author={van den Hoogen, Jurgen and Bloemheuvel, Stefan and Atzmueller, Martin},
+  journal={ICDMW},
+  year={2020}
+}
+```
 
 ### Requirements
 Usage of our code requires many packages to be installed on your machine. The most important packages are listed below:
