@@ -4,7 +4,9 @@ exec(open('Utils.py').read())
 
 # Full WDTCNN model function
 def full_model_WDTCNN():
-    data = cwru.CWRU("12FanEndFault", 2048, 0.8, 1, '1797','1750')
+    # load in data
+    data = multivariate_cwru.CWRU("12FanEndFault",2048,0.8,1,2,'1797','1750',normal_condition = True)
+
 
     # Sequence length
     seq_len = data.X_train.shape[1]
