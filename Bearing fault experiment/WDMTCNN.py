@@ -4,6 +4,7 @@ exec(open('Utils.py').read())
 
 # Full WDMTCNN model function
 def full_model_WDMTCNN():
+    # load in data
     data = multivariate_cwru.CWRU("12FanEndFault",2048,0.8,1,2,'1797','1750',normal_condition = True)
 
     # Create dummies for the labels
