@@ -2,8 +2,6 @@
 exec(open('import_file.py').read())
 exec(open('Utils.py').read())
 
-
-
 # Full WDCNN model function
 def full_model_WDCNN():
     # load in data
