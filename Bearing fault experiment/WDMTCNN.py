@@ -14,16 +14,16 @@ def full_model_WDMTCNN():
     y = dummies.values
 
     # Initialize a scaler using the training data
-    scaler = StandardScaler().fit(flatten(data.X_train))
+    scaler = StandardScaler().fit(flatten(data.x_train))
 
     # scaling of train,validation and test set
-    data.X_train = scale(data.X_train, scaler)
-    data.X_test = scale(data.X_test, scaler)
+    data.x_train = scale(data.x_train, scaler)
+    data.x_test = scale(data.x_test, scaler)
     
     # Split multivariate signals into separate time series
-    data.X_test0 = np.dsplit(data.X_test,2)
-    data.X_test1 = data.X_test0[0]
-    data.X_test2 = data.X_test0[1]
+    data.x_test0 = np.dsplit(data.x_test,2)
+    data.x_test1 = data.x_test0[0]
+    data.x_test2 = data.x_test0[1]
     
     # Initialize k-folds
     kf = StratifiedKFold(5, shuffle=False, random_state=42) # Use for StratifiedKFold classification
@@ -41,13 +41,13 @@ def full_model_WDMTCNN():
     earlystop = EarlyStopping(monitor= 'val_loss', min_delta=0 , patience=30, verbose=0, mode='auto')
     
     # Initialize loop for every kth fold
-    for train, test in kf.split(data.X_train, data.y_train['label']): # Must specify y StratifiedKFold for 
+    for train, test in kf.split(data.x_train, data.y_train['label']): # Must specify y StratifiedKFold for 
         fold+=1
         print(f"Fold #{fold}")
         
-        x_train = data.X_train[train]
+        x_train = data.x_train[train]
         y_train = y[train]
-        x_test = data.X_train[test]
+        x_test = data.x_train[test]
         y_test = y[test]
         
         x_train0 = np.dsplit(x_train, 2)
@@ -187,7 +187,7 @@ def full_model_WDMTCNN():
         print(f"Validation fold score(accuracy): {score}")
     	
     	# Predictions on the test set
-        test_predictions_loop = wdcnn_multi.predict([data.X_test1,data.X_test2])
+        test_predictions_loop = wdcnn_multi.predict([data.x_test1,data.x_test2])
         # Append actual labels of the test set to empty list
         oos_test_y.append(data.y_test)
         # Append raw probabilities of the test set to empty list
@@ -202,7 +202,7 @@ def full_model_WDMTCNN():
         print(f"Test fold score (accuracy): {test_score}")
         
         # Activations per layer when predicting on test set
-        activations = activation_model.predict([data.X_test1, data.X_test2])
+        activations = activation_model.predict([data.x_test1, data.x_test2])
         oos_test_activations.append(activations)
         
 
