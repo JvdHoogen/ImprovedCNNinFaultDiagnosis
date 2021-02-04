@@ -128,7 +128,7 @@ def full_model_WDTCNN():
         print(f"Validation fold score(accuracy): {score}")
     	
     	# Predictions on the test set
-        test_predictions_loop = convnet.predict(data.X_test)
+        test_predictions_loop = convnet.predict(data.x_test)
         # Append actual labels of the test set to empty list
         oos_test_y.append(data.y_test)
         # Append raw probabilities of the test set to empty list
@@ -143,7 +143,7 @@ def full_model_WDTCNN():
         print(f"Test fold score (accuracy): {test_score}")
         
         # Activations per layer when predicting on test set
-        activations = activation_model.predict(data.X_test)
+        activations = activation_model.predict(data.x_test)
         oos_test_activations.append(activations)
         
 
