@@ -9,10 +9,10 @@ def full_model_WDTCNN():
 
 
     # Sequence length
-    seq_len = data.X_train.shape[1]
+    seq_len = data.x_train.shape[1]
 
     # Number of sensors
-    sens = data.X_train.shape[2]
+    sens = data.x_train.shape[2]
 
     # Create dummies for the labels
     data.y_train = pd.DataFrame(data.y_train, columns=['label'])
@@ -21,11 +21,11 @@ def full_model_WDTCNN():
     y = dummies.values
 
     # Initialize a scaler using the training data
-    scaler = StandardScaler().fit(flatten(data.X_train))
+    scaler = StandardScaler().fit(flatten(data.x_train))
 
     # scaling of train,validation and test set
-    data.X_train = scale(data.X_train, scaler)
-    data.X_test = scale(data.X_test, scaler)
+    data.x_train = scale(data.x_train, scaler)
+    data.x_test = scale(data.x_test, scaler)
 
     # Initialize k-folds
     kf = StratifiedKFold(5, shuffle=False, random_state=42) # Use for StratifiedKFold CV
@@ -43,13 +43,13 @@ def full_model_WDTCNN():
     earlystop = EarlyStopping(monitor= 'val_loss', min_delta=0 , patience=30, verbose=0, mode='auto')
     
     # Initialize loop for every kth fold
-    for train, test in kf.split(data.X_train, data.y_train['label']): # Must specify y StratifiedKFold for 
+    for train, test in kf.split(data.x_train, data.y_train['label']): # Must specify y StratifiedKFold for 
         fold+=1
         print(f"Fold #{fold}")
         
-        x_train = data.X_train[train]
+        x_train = data.x_train[train]
         y_train = y[train]
-        x_test = data.X_train[test]
+        x_test = data.x_train[test]
         y_test = y[test]
     
     
@@ -60,7 +60,7 @@ def full_model_WDTCNN():
         convnet = Sequential()
 
         # WDTCNN architecture
-        convnet.add(Conv1D(filters=16, kernel_size=64, strides=16, padding='same',input_shape=input_shape))
+        convnet.add(Conv1D(filters=32, kernel_size=64, strides=16, padding='same',input_shape=input_shape))
         convnet.add(BatchNormalization())
         convnet.add(Activation("relu"))
         convnet.add(AveragePooling1D(strides=2))
