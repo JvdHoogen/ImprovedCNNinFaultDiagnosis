@@ -7,7 +7,7 @@ This repository is supplementary to our paper "An Improved Wide-Kernel CNN for C
 models and their respective performance. 
 
 ### Abstract
-Deep Learning (DL) provides considerable opportu- nities for increased efficiency and performance in fault diagnosis. The ability of DL methods for automatic 
+Deep Learning (DL) provides considerable opportunities for increased efficiency and performance in fault diagnosis. The ability of DL methods for automatic 
 feature extraction can reduce the need for time-intensive feature construction and prior knowledge on complex signal processing. In this paper, we propose two 
 models that are built on the Wide-Kernel Deep Convolutional Neural Network (WDCNN) framework to improve performance of classifying fault conditions using 
 multivariate time series data, also with respect to limited and/or noisy training data. In our experiments, we use the renowned benchmark dataset from the Case 
