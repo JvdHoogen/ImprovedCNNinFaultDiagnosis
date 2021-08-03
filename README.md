@@ -1,8 +1,6 @@
 # Improved CNN for Classifying Signals in Fault Diagnosis
 
 
-[PAGE IN PROGRESS]
-
 This repository is supplementary to our paper "An Improved Wide-Kernel CNN for Classifying Multivariate Signals in Fault Diagnosis" for reproducing our proposed 
 models and their respective performance. 
 
